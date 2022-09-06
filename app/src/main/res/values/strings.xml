@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">cooking_recipe</string>
+    <string name="app_name">Cooking recipes</string>
+
+    <string name="home_name">Home</string>
+    <string name="favorite_name">Favorite</string>
+    <string name="settings_name">Settings</string>
 </resources>

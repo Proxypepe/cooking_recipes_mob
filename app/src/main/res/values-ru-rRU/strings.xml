@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cooking recipes</string>
+    <string name="home_name">Главная</string>
+    <string name="favorite_name">Избарнные</string>
+    <string name="settings_name">Настройки</string>
+</resources>
