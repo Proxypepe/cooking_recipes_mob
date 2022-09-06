@@ -23,5 +23,5 @@ class RecipeLocalRepository(private val recipeDao: RecipeDao) {
         return result
     }
 
-    fun deleteAllRecipes() = recipeDao.deleteAllRecipes()
+    suspend fun deleteAllRecipes() = recipeDao.deleteAllRecipes()
 }

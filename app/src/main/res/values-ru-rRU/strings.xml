@@ -4,4 +4,11 @@
     <string name="home_name">Главная</string>
     <string name="favorite_name">Избарнные</string>
     <string name="settings_name">Настройки</string>
+
+    <string name="clean_name">Clean app cache</string>
+    <string name="clean_description">Cleaning application cache</string>
+    <string name="clean_button_name">Clean</string>
+    <string name="change_theme_name">Change theme</string>
+    <string name="change_theme_description">Change theme application theme</string>
+
 </resources>

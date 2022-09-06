@@ -76,6 +76,7 @@ fun SearchLine(
             keyboardActions = KeyboardActions(
                 onDone = {
                     onSearchAction(query)
+                    query = ""
                     keyboardController?.hide()
                     focusManager.clearFocus()
                 }),

@@ -1,24 +1,18 @@
 package com.example.cooking_recipe.ui.theme
 
-import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalView
-import androidx.core.view.ViewCompat
+import androidx.compose.runtime.*
+import androidx.compose.ui.graphics.Color
+
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
     secondary = PurpleGrey80,
-    tertiary = Pink80
+    tertiary = Pink80,
+    background = Color(0xFF161517)
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -37,32 +31,64 @@ private val LightColorScheme = lightColorScheme(
     */
 )
 
+data class ExtendedColors(
+    val background: Color,
+    val onBackground: Color,
+    val selectedColor: Color = Color(0xFF555555),
+    val unSelectedColor: Color = Color(0xFF414141)
+)
+
+
+private val DarkExtendedColors by lazy {
+    ExtendedColors(
+        background = Color(0xFF19181B),
+        onBackground = Color(0xFF001021)
+    )
+}
+
+private val LightExtendedColors by lazy {
+    ExtendedColors(
+        background = Color(0xFFFFFFFF),
+        onBackground = Color(0xFF001021)
+    )
+}
+
+
+val LocalExtendedColors = staticCompositionLocalOf {
+    ExtendedColors(
+        background = Color.Unspecified,
+        onBackground = Color.Unspecified
+    )
+}
+
 @Composable
 fun Cooking_recipeTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
+    val extendedColors = if (darkTheme) {
+        DarkExtendedColors
+    } else {
+        LightExtendedColors
+    }
+
     val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
-    val view = LocalView.current
-    if (!view.isInEditMode) {
-        SideEffect {
-            (view.context as Activity).window.statusBarColor = colorScheme.primary.toArgb()
-            ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = darkTheme
-        }
-    }
 
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
-    )
+    CompositionLocalProvider(LocalExtendedColors provides extendedColors) {
+        MaterialTheme(
+            colorScheme = colorScheme,
+            typography = Typography,
+            content = content
+        )
+    }
+}
+
+object ExtendedTheme {
+    val colors: ExtendedColors
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalExtendedColors.current
 }

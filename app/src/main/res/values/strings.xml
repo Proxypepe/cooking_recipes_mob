@@ -4,4 +4,12 @@
     <string name="home_name">Home</string>
     <string name="favorite_name">Favorite</string>
     <string name="settings_name">Settings</string>
+
+    <string name="clean_name">Clean app cache</string>
+    <string name="clean_description">Cleaning application cache</string>
+    <string name="clean_button_name">Clean</string>
+    <string name="change_theme_name">Change theme</string>
+    <string name="change_theme_description">Change theme application theme</string>
+
+
 </resources>

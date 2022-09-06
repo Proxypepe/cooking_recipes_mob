@@ -18,6 +18,7 @@ import com.example.cooking_recipe.presentation.screens.home.viewmodels.HomeViewM
 fun HomeScreen(
     homeViewModel: HomeViewModel
 ) {
+    // #TODO check emptyList
     Column {
         SearchLine(
             homeViewModel::search

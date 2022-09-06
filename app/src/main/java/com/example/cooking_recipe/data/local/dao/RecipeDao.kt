@@ -16,6 +16,6 @@ interface RecipeDao {
     fun getSavedRecipe(): Flow<List<RecipeEntity>>
 
     @Query("DELETE FROM recipe")
-    fun deleteAllRecipes()
+    suspend fun deleteAllRecipes()
 
 }
