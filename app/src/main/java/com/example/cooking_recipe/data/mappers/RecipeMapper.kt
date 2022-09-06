@@ -28,4 +28,24 @@ object RecipeMapper {
             tags = recipeEntity.tags
         )
     }
+
+    val recipeDefault = Recipe(
+        cook = "4 hrs",
+        file_name = "some_file",
+        ingredients = 4,
+        name = "Beef",
+        prepare = "15 min",
+        steps = 3,
+        tags = listOf("beef", "fire"),
+    )
+
+    val recipeEntity = Recipe(
+        cook = "4 hrs",
+        file_name = "some_file",
+        ingredients = 4,
+        name = "Beef",
+        prepare = "15 min",
+        steps = 3,
+        tags = listOf("beef"),
+    )
 }

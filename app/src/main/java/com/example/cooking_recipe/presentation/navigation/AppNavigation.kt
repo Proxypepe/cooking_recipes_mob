@@ -8,6 +8,7 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.NavHost
@@ -17,13 +18,20 @@ import com.example.cooking_recipe.R
 import com.example.cooking_recipe.presentation.navigation.components.BottomNavItem
 import com.example.cooking_recipe.presentation.navigation.components.BottomNavigationBar
 import com.example.cooking_recipe.presentation.screens.favorites.FavoritesScreen
+import com.example.cooking_recipe.presentation.screens.favorites.viewmodels.FavoriteViewModel
 import com.example.cooking_recipe.presentation.screens.home.HomeScreen
+import com.example.cooking_recipe.presentation.screens.home.viewmodels.HomeViewModel
 import com.example.cooking_recipe.presentation.screens.settings.SettingsScreen
+import com.example.cooking_recipe.presentation.screens.settings.viewmodels.SettingsViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(
+    ExperimentalMaterial3Api::class,
+    ExperimentalComposeUiApi::class)
 @Composable
 fun AppNavigation(
-
+    homeViewModel: HomeViewModel,
+    favoriteViewModel: FavoriteViewModel,
+    settingsViewModel: SettingsViewModel
 ){
     val navController = rememberNavController()
     Scaffold(
@@ -61,7 +69,9 @@ fun AppNavigation(
             startDestination = NavigationRouter.Home.route)
         {
             composable(NavigationRouter.Home.route) {
-                HomeScreen()
+                HomeScreen(
+                    homeViewModel
+                )
             }
 
             composable(NavigationRouter.Favorite.route) {

@@ -8,8 +8,8 @@ import retrofit2.http.Path
 
 interface RecipeApi {
     @GET(".")
-    suspend fun getRecipes(): Result<Iterable<Recipe>>
+    suspend fun getRecipes(): Response<Iterable<Recipe>>
 
     @GET("./{recipe_name}")
-    suspend fun getExtendedRecipe(@Path("recipe_name") recipe_name: String): Result<ExtendedRecipe>
+    suspend fun getExtendedRecipe(@Path("recipe_name") recipe_name: String): Response<ExtendedRecipe>
 }
