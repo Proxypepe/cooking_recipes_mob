@@ -29,7 +29,7 @@ fun RecipeCard(
     Card(
         modifier = modifier.fillMaxWidth(),
         backgroundColor = ExtendedTheme.colors.background,
-        elevation = 5.dp
+        elevation = ExtendedTheme.extendedTypography.standardElevation
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

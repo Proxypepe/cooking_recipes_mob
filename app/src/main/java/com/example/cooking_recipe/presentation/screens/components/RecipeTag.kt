@@ -9,6 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.cooking_recipe.ui.theme.ExtendedTheme
+import com.example.cooking_recipe.ui.theme.PaddingSize
 
 
 @Composable
@@ -17,10 +19,11 @@ fun RecipeTag(
     modifier: Modifier = Modifier
 ) {
     Surface(
+        // #TODO shape
         shape = RoundedCornerShape(10.dp),
-        border = BorderStroke(1.dp, color = Color.Black),
+        border = BorderStroke(1.dp, color = ExtendedTheme.colors.borderColor),
         modifier = modifier
     ){
-        Text(text = tag , modifier = Modifier.padding(5.dp))
+        Text(text = tag , modifier = Modifier.padding(PaddingSize.Small.size))
     }
 }

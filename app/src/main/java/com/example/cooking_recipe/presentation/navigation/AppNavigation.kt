@@ -10,6 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.cooking_recipe.presentation.navigation.components.AppBottomNavigationBar
+import com.example.cooking_recipe.presentation.screens.detailed.DetailedScreen
 import com.example.cooking_recipe.presentation.screens.favorites.FavoritesScreen
 import com.example.cooking_recipe.presentation.screens.favorites.viewmodels.FavoriteViewModel
 import com.example.cooking_recipe.presentation.screens.home.HomeScreen
@@ -38,14 +39,18 @@ fun AppNavigation(
         NavHost(
             modifier = Modifier.padding(innerPadding),
             navController = navController,
-            startDestination = NavigationRouter.Home.route
+            startDestination = NavigationRouter.Detailed.route
         ) {
             composable(NavigationRouter.Home.route) {
                 HomeScreen(
                     homeViewModel
                 )
             }
-
+            composable(NavigationRouter.Detailed.route) {
+                DetailedScreen(
+                    navController = navController
+                )
+            }
             composable(NavigationRouter.Favorite.route) {
                 FavoritesScreen()
             }

@@ -32,7 +32,7 @@ fun SearchLine(
     modifier: Modifier = Modifier
 ) {
 
-    var query by remember { mutableStateOf("")}
+    var query by remember { mutableStateOf("") }
     val keyboardController = LocalSoftwareKeyboardController.current
     val focusManager = LocalFocusManager.current
 
