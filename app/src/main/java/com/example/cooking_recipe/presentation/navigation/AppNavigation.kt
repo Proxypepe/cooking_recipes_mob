@@ -58,11 +58,16 @@ fun AppNavigation(
             }
 
             composable(NavigationRouter.Favorite.route) {
-                FavoritesScreen()
+                FavoritesScreen(
+                    favoriteViewModel = favoriteViewModel,
+                    navController = navController
+                )
             }
 
             composable(NavigationRouter.Settings.route) {
-                SettingsScreen(settingsViewModel)
+                SettingsScreen(
+                    settingsViewModel = settingsViewModel
+                )
             }
 
         }

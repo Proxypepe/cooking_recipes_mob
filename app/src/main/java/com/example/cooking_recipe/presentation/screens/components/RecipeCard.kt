@@ -28,12 +28,9 @@ import com.example.cooking_recipe.ui.theme.ExtendedTheme
 fun RecipeCard(
     recipeInfo: Recipe,
     modifier: Modifier = Modifier,
-    navController: NavHostController
 ) {
     Card(
-        modifier = modifier.fillMaxWidth().clickable{
-            navController.navigate(NavigationRouter.Detailed.route)
-        },
+        modifier = modifier.fillMaxWidth(),
         backgroundColor = ExtendedTheme.colors.background,
         elevation = ExtendedTheme.extendedTypography.standardElevation
     ) {

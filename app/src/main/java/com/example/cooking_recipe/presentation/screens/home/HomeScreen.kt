@@ -1,5 +1,6 @@
 package com.example.cooking_recipe.presentation.screens.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -36,8 +37,9 @@ fun HomeScreen(
             items(4) {
                 RecipeCard(
                     recipeInfo = RecipeMapper.recipeDefault,
-                    modifier = Modifier.padding(5.dp),
-                    navController = navController
+                    modifier = Modifier.padding(5.dp).clickable{
+                        navController.navigate(NavigationRouter.Detailed.route)
+                    },
                 )
             }
         }
