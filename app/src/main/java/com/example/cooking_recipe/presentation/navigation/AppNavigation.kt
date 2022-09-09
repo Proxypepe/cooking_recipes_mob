@@ -33,8 +33,6 @@ fun AppNavigation(
         bottomBar = {
             AppBottomNavigationBar(navController)
         },
-
-
         ) { innerPadding ->
         NavHost(
             modifier = Modifier.padding(innerPadding),
@@ -46,11 +44,13 @@ fun AppNavigation(
                     homeViewModel
                 )
             }
+
             composable(NavigationRouter.Detailed.route) {
                 DetailedScreen(
                     navController = navController
                 )
             }
+
             composable(NavigationRouter.Favorite.route) {
                 FavoritesScreen()
             }

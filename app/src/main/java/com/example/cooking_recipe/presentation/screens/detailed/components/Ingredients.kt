@@ -56,9 +56,10 @@ fun IngredientsSection(
                         Text(text = "Adjust")
                     }
                 }
+                Text(text = "Servings")
 
                 Spacer(
-                    modifier = Modifier.height(PaddingSize.Medium.size)
+                    modifier = Modifier.height(PaddingSize.Small.size)
                 )
 
                 ingredients.map {

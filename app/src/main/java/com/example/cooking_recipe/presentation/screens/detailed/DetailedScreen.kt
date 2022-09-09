@@ -15,6 +15,7 @@ import com.example.cooking_recipe.data.mappers.FullRecipeMapper
 import com.example.cooking_recipe.presentation.screens.detailed.components.Header
 import com.example.cooking_recipe.presentation.screens.detailed.components.IngredientsSection
 import com.example.cooking_recipe.presentation.screens.detailed.components.StepsSection
+import com.example.cooking_recipe.presentation.screens.detailed.components.TopBar
 import com.example.cooking_recipe.ui.theme.PaddingSize
 
 
@@ -29,8 +30,12 @@ fun DetailedScreen(
         Scaffold(
             backgroundColor = MaterialTheme.colorScheme.background,
             topBar = {
-                // Component backarrow name fav icon
-
+                TopBar(
+                    name = name,
+                    isFavorite = false,
+                    onFavoriteChanged = {},
+                    navController = navController
+                )
             }
         ) {
             LazyColumn(
@@ -56,7 +61,6 @@ fun DetailedScreen(
                 }
 
                 item {
-                    // Component steps
                     StepsSection(
                         steps = steps,
                     )
