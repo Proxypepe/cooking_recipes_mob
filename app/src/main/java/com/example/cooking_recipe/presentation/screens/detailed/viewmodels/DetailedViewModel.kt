@@ -28,18 +28,27 @@ class DetailedViewModel(
         }
     }
 
-    fun onCheckedChanged() = viewModelScope.launch {
+    fun onCheckedChanged()  {
         if (_isFavorite.value)
-            favoriteLocalRepository.deleteFavorite(
-                name
-            )
+            delete()
         else
-            favoriteLocalRepository.saveFavorite(
-                FullRecipeMapper.toFavoriteEntity(
-                    _currentFullRecipe.value
-                )
-            )
+            insert()
     }
+
+    private fun insert() = viewModelScope.launch {
+        favoriteLocalRepository.saveFavorite(
+            FullRecipeMapper.toFavoriteEntity(
+                _currentFullRecipe.value
+            )
+        )
+    }
+
+    private fun delete() = viewModelScope.launch {
+        favoriteLocalRepository.deleteFavorite(
+            _currentFullRecipe.value.name
+        )
+    }
+
 }
 
 
