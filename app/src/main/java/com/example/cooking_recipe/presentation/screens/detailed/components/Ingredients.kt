@@ -3,6 +3,7 @@ package com.example.cooking_recipe.presentation.screens.detailed.components
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -16,7 +17,7 @@ import com.example.cooking_recipe.ui.theme.PaddingSize
 @Composable
 fun IngredientsSection(
     ingredients: List<String>
-    // #TODO (int) -> Unit
+    // #TODO (int) -> Unit adjust function
 ) {
 
     val servings = remember { mutableStateOf(1) }
@@ -29,7 +30,11 @@ fun IngredientsSection(
         Column(
             modifier = Modifier.padding(PaddingSize.Small.size),
         ) {
-            Text(text = "Ingredients", modifier = Modifier.fillMaxWidth())
+            Text(
+                text = "Ingredients",
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(PaddingSize.Large.size)
+            )
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -42,7 +47,7 @@ fun IngredientsSection(
                     AdjustButton(
                         servings
                     )
-                    Spacer(modifier = Modifier.width(PaddingSize.Small.size))
+                    Spacer(modifier = Modifier.width(PaddingSize.Medium.size))
                     Button(
                         onClick =  {
                             /*TODO*/

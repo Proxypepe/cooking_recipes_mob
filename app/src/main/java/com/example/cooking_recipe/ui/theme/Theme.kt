@@ -37,8 +37,10 @@ data class ExtendedColors(
     val background: Color,
     val onBackground: Color,
     val borderColor: Color,
+    val textColor: Color,
     val selectedColor: Color = Color(0xFF555555),
     val unSelectedColor: Color = Color(0xFF414141),
+
 )
 
 data class ExtendedTypography(
@@ -51,6 +53,7 @@ private val DarkExtendedColors by lazy {
         background = Color(0xFF19181B),
         onBackground = Color(0xFF001021),
         borderColor = Color(0xFF161517),
+        textColor = Color.White,
     )
 }
 
@@ -58,7 +61,8 @@ private val LightExtendedColors by lazy {
     ExtendedColors(
         background = Color(0xFFFFFFFF),
         onBackground = Color(0xFF001021),
-        borderColor = Color.Black
+        borderColor = Color.Black,
+        textColor = Color.Black
     )
 }
 
@@ -68,6 +72,7 @@ val LocalExtendedColors = staticCompositionLocalOf {
         background = Color.Unspecified,
         onBackground = Color.Unspecified,
         borderColor = Color.Black,
+        textColor = Color.Unspecified
     )
 }
 

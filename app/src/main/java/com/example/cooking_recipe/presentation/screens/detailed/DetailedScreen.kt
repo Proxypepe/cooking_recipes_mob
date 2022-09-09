@@ -14,6 +14,7 @@ import androidx.navigation.NavHostController
 import com.example.cooking_recipe.data.mappers.FullRecipeMapper
 import com.example.cooking_recipe.presentation.screens.detailed.components.Header
 import com.example.cooking_recipe.presentation.screens.detailed.components.IngredientsSection
+import com.example.cooking_recipe.presentation.screens.detailed.components.StepsSection
 import com.example.cooking_recipe.ui.theme.PaddingSize
 
 
@@ -24,38 +25,42 @@ fun DetailedScreen(
     // get FullRecipe
 
     val mockFullRecipe = FullRecipeMapper.extendedRecipeDefault
+    with(mockFullRecipe) {
+        Scaffold(
+            backgroundColor = MaterialTheme.colorScheme.background,
+            topBar = {
+                // Component backarrow name fav icon
 
-    Scaffold(
-        backgroundColor = MaterialTheme.colorScheme.background,
-        topBar = {
-            // Component backarrow name fav icon
-
-        }
-    ) {
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            }
         ) {
-            item {
-                Header(
-                    prepare = mockFullRecipe.prepare,
-                    cooking = mockFullRecipe.cook,
-                    description = mockFullRecipe.description,
-                    fileName = mockFullRecipe.file_name,
-                )
-                Spacer(modifier = Modifier.height(PaddingSize.Small.size))
-            }
-            item {
-                IngredientsSection(
-                    ingredients = mockFullRecipe.ingredients
-                )
-            }
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                item {
+                    Header(
+                        prepare = prepare,
+                        cooking = cook,
+                        description = description,
+                        fileName = file_name,
+                    )
+                    Spacer(modifier = Modifier.height(PaddingSize.Small.size))
+                }
 
-            item {
-                // Component steps
+                item {
+                    IngredientsSection(
+                        ingredients = ingredients
+                    )
+                    Spacer(modifier = Modifier.height(PaddingSize.Small.size))
+                }
 
-
+                item {
+                    // Component steps
+                    StepsSection(
+                        steps = steps,
+                    )
+                }
             }
         }
     }
