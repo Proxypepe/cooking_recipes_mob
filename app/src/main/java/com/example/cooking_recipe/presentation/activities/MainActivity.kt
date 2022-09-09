@@ -12,6 +12,8 @@ import com.example.cooking_recipe.domain.CookingRecipeApplication
 import com.example.cooking_recipe.domain.common.AppSettings
 import com.example.cooking_recipe.domain.common.AppSettingsSerializer
 import com.example.cooking_recipe.presentation.navigation.AppNavigation
+import com.example.cooking_recipe.presentation.screens.detailed.viewmodels.DetailedViewModel
+import com.example.cooking_recipe.presentation.screens.detailed.viewmodels.DetailedViewModelFactory
 import com.example.cooking_recipe.presentation.screens.favorites.viewmodels.FavoriteViewModel
 import com.example.cooking_recipe.presentation.screens.favorites.viewmodels.FavoriteViewModelFactory
 import com.example.cooking_recipe.presentation.screens.home.viewmodels.HomeViewModel
@@ -43,6 +45,13 @@ class MainActivity : ComponentActivity() {
         )
     }
 
+    private val detailedViewModel: DetailedViewModel by viewModels {
+        DetailedViewModelFactory(
+            (application as CookingRecipeApplication).favoriteLocalRepository
+        )
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -55,7 +64,8 @@ class MainActivity : ComponentActivity() {
                 AppNavigation(
                     homeViewModel = homeViewModel,
                     favoriteViewModel = favoriteViewModel,
-                    settingsViewModel = settingsViewModel
+                    settingsViewModel = settingsViewModel,
+                    detailedViewModel = detailedViewModel
                 )
             }
         }

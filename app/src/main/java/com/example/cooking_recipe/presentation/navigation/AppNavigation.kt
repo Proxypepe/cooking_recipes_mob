@@ -11,6 +11,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.cooking_recipe.presentation.navigation.components.AppBottomNavigationBar
 import com.example.cooking_recipe.presentation.screens.detailed.DetailedScreen
+import com.example.cooking_recipe.presentation.screens.detailed.viewmodels.DetailedViewModel
 import com.example.cooking_recipe.presentation.screens.favorites.FavoritesScreen
 import com.example.cooking_recipe.presentation.screens.favorites.viewmodels.FavoriteViewModel
 import com.example.cooking_recipe.presentation.screens.home.HomeScreen
@@ -26,27 +27,32 @@ import com.example.cooking_recipe.presentation.screens.settings.viewmodels.Setti
 fun AppNavigation(
     homeViewModel: HomeViewModel,
     favoriteViewModel: FavoriteViewModel,
-    settingsViewModel: SettingsViewModel
+    settingsViewModel: SettingsViewModel,
+    detailedViewModel: DetailedViewModel
 ) {
     val navController = rememberNavController()
     Scaffold(
         bottomBar = {
             AppBottomNavigationBar(navController)
         },
-        ) { innerPadding ->
+    ) { innerPadding ->
         NavHost(
             modifier = Modifier.padding(innerPadding),
             navController = navController,
-            startDestination = NavigationRouter.Detailed.route
+            startDestination = NavigationRouter.Home.route
         ) {
             composable(NavigationRouter.Home.route) {
                 HomeScreen(
-                    homeViewModel
+                    homeViewModel = homeViewModel,
+                    navController = navController
                 )
             }
 
             composable(NavigationRouter.Detailed.route) {
+                detailedViewModel.name = "Beef"
+                detailedViewModel.isExistFavorite()
                 DetailedScreen(
+                    detailedViewModel = detailedViewModel,
                     navController = navController
                 )
             }

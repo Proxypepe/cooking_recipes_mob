@@ -9,7 +9,11 @@ class FavoriteLocalRepository(private val repository: FavoriteDao) {
 
     fun getSavedFavorites(): Flow<List<FavoriteEntity>> = repository.getSavedFavorites()
 
+    fun isExistFavorite(name: String): Flow<Boolean> = repository.isExistFavorite(name)
+
+    fun getFavoriteByName(name: String): Flow<FavoriteEntity?> = repository.getFavoriteByName(name)
+
     fun deleteAllFavorites() = repository.deleteAllFavorites()
 
-    suspend fun deleteFavorite(recipe: FavoriteEntity) = repository.deleteFavorite(recipe)
+    fun deleteFavorite(name: String) = repository.deleteFavorite(name)
 }

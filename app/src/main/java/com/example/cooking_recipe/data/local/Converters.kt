@@ -1,15 +1,22 @@
 package com.example.cooking_recipe.data.local
 
 import androidx.room.TypeConverter
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.lang.reflect.Type
+
 
 class Converters {
     @TypeConverter
-    fun fromList(value: List<String>): String {
-        return value.joinToString { "," }
+    fun toList(value: List<String>): String {
+        val gson = Gson()
+        return gson.toJson(value)
     }
 
     @TypeConverter
-    fun toList(value: String): List<String> {
-        return value.split(",")
+    fun fromList(value: String): List<String> {
+        val gson = Gson()
+        val type: Type = object : TypeToken<List<String?>?>() {}.type
+        return gson.fromJson(value, type)
     }
 }

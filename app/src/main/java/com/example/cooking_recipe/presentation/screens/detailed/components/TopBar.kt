@@ -15,16 +15,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.navigation.NavHostController
 import com.example.cooking_recipe.ui.theme.ExtendedTheme
+import kotlinx.coroutines.flow.StateFlow
 
 
 @Composable
 fun TopBar(
     name: String,
-    isFavorite: Boolean,
+    isFavorite: StateFlow<Boolean>,
     onFavoriteChanged: () -> Unit,
     navController: NavHostController,
 ) {
-    var isRed by remember { mutableStateOf(value = isFavorite) }
+    var isRed by remember { mutableStateOf(value = isFavorite.value) }
     val animatedColor by animateColorAsState(
         if (isRed) Color.Red else Color.Black,
         animationSpec = tween(

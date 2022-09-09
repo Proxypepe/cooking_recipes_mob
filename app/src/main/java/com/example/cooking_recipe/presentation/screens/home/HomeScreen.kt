@@ -7,7 +7,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.cooking_recipe.data.mappers.RecipeMapper
+import com.example.cooking_recipe.presentation.navigation.NavigationRouter
 import com.example.cooking_recipe.presentation.screens.components.RecipeCard
 import com.example.cooking_recipe.presentation.screens.home.components.SearchLine
 import com.example.cooking_recipe.presentation.screens.home.viewmodels.HomeViewModel
@@ -16,12 +18,13 @@ import com.example.cooking_recipe.presentation.screens.home.viewmodels.HomeViewM
 @ExperimentalComposeUiApi
 @Composable
 fun HomeScreen(
-    homeViewModel: HomeViewModel
+    homeViewModel: HomeViewModel,
+    navController: NavHostController
 ) {
     // #TODO check emptyList
     Column {
         SearchLine(
-            homeViewModel::search
+            onSearchAction = homeViewModel::search
         )
         LazyColumn(
             modifier = Modifier
@@ -32,8 +35,9 @@ fun HomeScreen(
         ) {
             items(4) {
                 RecipeCard(
-                    RecipeMapper.recipeDefault,
-                    modifier = Modifier.padding(5.dp)
+                    recipeInfo = RecipeMapper.recipeDefault,
+                    modifier = Modifier.padding(5.dp),
+                    navController = navController
                 )
             }
         }

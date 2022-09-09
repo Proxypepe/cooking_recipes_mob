@@ -2,6 +2,7 @@ package com.example.cooking_recipe.presentation.screens.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.SnackbarDefaults.backgroundColor
@@ -14,9 +15,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.cooking_recipe.R
 import com.example.cooking_recipe.data.mappers.RecipeMapper
 import com.example.cooking_recipe.data.remote.models.Recipe
+import com.example.cooking_recipe.presentation.navigation.NavigationRouter
 import com.example.cooking_recipe.ui.theme.Cooking_recipeTheme
 import com.example.cooking_recipe.ui.theme.ExtendedTheme
 
@@ -25,9 +28,12 @@ import com.example.cooking_recipe.ui.theme.ExtendedTheme
 fun RecipeCard(
     recipeInfo: Recipe,
     modifier: Modifier = Modifier,
+    navController: NavHostController
 ) {
     Card(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth().clickable{
+            navController.navigate(NavigationRouter.Detailed.route)
+        },
         backgroundColor = ExtendedTheme.colors.background,
         elevation = ExtendedTheme.extendedTypography.standardElevation
     ) {
@@ -62,14 +68,4 @@ fun RecipeCard(
             }
         }
     }
-}
-
-
-@Preview
-@Composable
-fun RecipeCardPreview() {
-    RecipeCard(
-        RecipeMapper.recipeDefault,
-        Modifier
-    )
 }

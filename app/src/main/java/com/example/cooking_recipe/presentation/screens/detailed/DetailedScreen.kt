@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Scaffold
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -16,24 +17,24 @@ import com.example.cooking_recipe.presentation.screens.detailed.components.Heade
 import com.example.cooking_recipe.presentation.screens.detailed.components.IngredientsSection
 import com.example.cooking_recipe.presentation.screens.detailed.components.StepsSection
 import com.example.cooking_recipe.presentation.screens.detailed.components.TopBar
+import com.example.cooking_recipe.presentation.screens.detailed.viewmodels.DetailedViewModel
 import com.example.cooking_recipe.ui.theme.PaddingSize
 
 
 @Composable
 fun DetailedScreen(
+    detailedViewModel: DetailedViewModel,
     navController: NavHostController,
 ) {
-    // get FullRecipe
-
-    val mockFullRecipe = FullRecipeMapper.extendedRecipeDefault
-    with(mockFullRecipe) {
+    val mockFullRecipe = detailedViewModel.currentFullRecipe.collectAsState()
+    with(mockFullRecipe.value) {
         Scaffold(
             backgroundColor = MaterialTheme.colorScheme.background,
             topBar = {
                 TopBar(
                     name = name,
-                    isFavorite = false,
-                    onFavoriteChanged = {},
+                    isFavorite = detailedViewModel.isFavorite,
+                    onFavoriteChanged = detailedViewModel::onCheckedChanged,
                     navController = navController
                 )
             }
