@@ -16,11 +16,11 @@ interface FavoriteDao {
     fun getFavoriteByName(name: String): Flow<FavoriteEntity?>
 
     @Query("DELETE FROM favorite")
-    fun deleteAllFavorites()
+    suspend fun deleteAllFavorites()
 
     @Query("SELECT EXISTS(SELECT * FROM favorite WHERE name = :name)")
     fun isExistFavorite(name: String): Flow<Boolean>
 
     @Query("DELETE FROM favorite WHERE name = :name")
-    fun deleteFavorite(name: String)
+    suspend fun deleteFavorite(name: String)
 }

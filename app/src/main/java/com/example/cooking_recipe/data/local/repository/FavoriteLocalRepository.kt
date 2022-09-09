@@ -13,7 +13,7 @@ class FavoriteLocalRepository(private val repository: FavoriteDao) {
 
     fun getFavoriteByName(name: String): Flow<FavoriteEntity?> = repository.getFavoriteByName(name)
 
-    fun deleteAllFavorites() = repository.deleteAllFavorites()
+    suspend fun deleteAllFavorites() = repository.deleteAllFavorites()
 
-    fun deleteFavorite(name: String) = repository.deleteFavorite(name)
+    suspend fun deleteFavorite(name: String) = repository.deleteFavorite(name)
 }
