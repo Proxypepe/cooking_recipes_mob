@@ -22,6 +22,7 @@ import com.example.cooking_recipe.data.remote.models.Recipe
 import com.example.cooking_recipe.presentation.navigation.NavigationRouter
 import com.example.cooking_recipe.ui.theme.Cooking_recipeTheme
 import com.example.cooking_recipe.ui.theme.ExtendedTheme
+import com.example.cooking_recipe.ui.theme.PaddingSize
 
 
 @Composable
@@ -37,7 +38,7 @@ fun RecipeCard(
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
-            modifier = modifier.padding(5.dp)
+            modifier = modifier.padding(PaddingSize.Small.size)
         ) {
             Image(
                 painterResource(R.drawable.ic_placeholder),
@@ -46,7 +47,7 @@ fun RecipeCard(
 
             Column(
                 modifier = Modifier
-                    .padding(10.dp)
+                    .padding(PaddingSize.Medium.size)
                     .fillMaxWidth(0.8f)
             ) {
                 Text(text = "Name: ${recipeInfo.name}", overflow = TextOverflow.Clip)
@@ -55,7 +56,7 @@ fun RecipeCard(
                 Text(text = "Steps: ${recipeInfo.steps}")
                 Text(text = "Ingredients: ${recipeInfo.ingredients}")
             }
-            Column{
+            Column {
                 recipeInfo.tags.map {
                     RecipeTag(
                         it,

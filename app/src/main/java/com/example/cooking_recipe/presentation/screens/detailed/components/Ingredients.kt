@@ -26,7 +26,7 @@ fun IngredientsSection(
         backgroundColor = ExtendedTheme.colors.background,
         modifier = Modifier.fillMaxWidth(),
         elevation = ExtendedTheme.extendedTypography.standardElevation,
-        ) {
+    ) {
         Column(
             modifier = Modifier.padding(PaddingSize.Small.size),
         ) {
@@ -49,10 +49,10 @@ fun IngredientsSection(
                     )
                     Spacer(modifier = Modifier.width(PaddingSize.Medium.size))
                     Button(
-                        onClick =  {
+                        onClick = {
                             /*TODO*/
                         }
-                    ){
+                    ) {
                         Text(text = "Adjust")
                     }
                 }

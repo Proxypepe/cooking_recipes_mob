@@ -12,6 +12,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.cooking_recipe.R
 import com.example.cooking_recipe.ui.theme.ExtendedTheme
+import com.example.cooking_recipe.ui.theme.PaddingSize
 
 
 @Composable
@@ -35,7 +36,7 @@ fun Header(
                 horizontalArrangement = Arrangement.Center
             ) {
                 CookingInfo(prepare, cooking)
-                Spacer(modifier = Modifier.width(5.dp))
+                Spacer(modifier = Modifier.width(PaddingSize.Small.size))
                 Image(
                     painterResource(R.drawable.ic_placeholder),
                     contentDescription = "",
@@ -43,7 +44,7 @@ fun Header(
                 )
             }
             Text(text = description)
-            Spacer(modifier = Modifier.height(5.dp))
+            Spacer(modifier = Modifier.height(PaddingSize.Small.size))
             Divider(thickness = 2.dp)
         }
     }

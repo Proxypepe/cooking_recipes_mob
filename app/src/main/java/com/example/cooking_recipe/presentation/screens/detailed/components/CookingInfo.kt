@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.cooking_recipe.ui.theme.ExtendedTheme
+import com.example.cooking_recipe.ui.theme.PaddingSize
 
 @Composable
 fun CookingInfo(
@@ -30,12 +31,12 @@ fun CookingInfo(
             Text(
                 text = "Prepare: $prepare",
                 style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.padding(5.dp)
+                modifier = Modifier.padding(PaddingSize.Small.size)
             )
             Text(
                 text = "Cooking: $cooking",
                 style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.padding(5.dp)
+                modifier = Modifier.padding(PaddingSize.Small.size)
             )
         }
     }

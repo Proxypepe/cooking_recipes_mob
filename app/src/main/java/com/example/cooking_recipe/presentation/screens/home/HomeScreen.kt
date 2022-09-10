@@ -14,6 +14,7 @@ import com.example.cooking_recipe.presentation.navigation.NavigationRouter
 import com.example.cooking_recipe.presentation.screens.components.RecipeCard
 import com.example.cooking_recipe.presentation.screens.home.components.SearchLine
 import com.example.cooking_recipe.presentation.screens.home.viewmodels.HomeViewModel
+import com.example.cooking_recipe.ui.theme.PaddingSize
 
 
 @ExperimentalComposeUiApi
@@ -29,7 +30,7 @@ fun HomeScreen(
         )
         LazyColumn(
             modifier = Modifier
-                .padding(start = 10.dp, end = 10.dp)
+                .padding(start = PaddingSize.Medium.size, end = PaddingSize.Medium.size)
                 .fillMaxWidth(),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -37,9 +38,11 @@ fun HomeScreen(
             items(4) {
                 RecipeCard(
                     recipeInfo = RecipeMapper.recipeDefault,
-                    modifier = Modifier.padding(5.dp).clickable{
-                        navController.navigate(NavigationRouter.Detailed.route)
-                    },
+                    modifier = Modifier
+                        .padding(PaddingSize.Small.size)
+                        .clickable {
+                            navController.navigate(NavigationRouter.Detailed.route)
+                        },
                 )
             }
         }

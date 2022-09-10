@@ -1,6 +1,5 @@
 package com.example.cooking_recipe.presentation.navigation.components
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -12,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -29,7 +27,7 @@ fun BottomNavigationBar(
     val backStackEntry = navController.currentBackStackEntryAsState()
     BottomNavigation(
         modifier = modifier,
-        elevation = 5.dp,
+        elevation = ExtendedTheme.extendedTypography.standardElevation,
         backgroundColor = ExtendedTheme.colors.background,
     ) {
         items.forEach { item ->
